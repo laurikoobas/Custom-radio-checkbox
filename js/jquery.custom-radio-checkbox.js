@@ -65,7 +65,10 @@
 						$(this).next().addClass(rds.type + checkedPrefix);
 					}
 					// if force set to true and is not already checked, check the input
-					if (force && !this.checked) this.checked = true;
+					if (force && !this.checked) {
+						this.checked = true;
+						$(this).change();
+					}
 				});
 			}
 			
@@ -80,7 +83,10 @@
 				// bind checkbox change event
 				chs.bind('change.crc', function (e, force) {
 					// if force set to true, change state
-					if (force) this.checked = !this.checked;
+					if (force) {
+						this.checked = !this.checked;
+						$(this).change();
+					}
 					
 					// toggle checked class
 					$(this).next().toggleClass(chs.type + checkedPrefix);
